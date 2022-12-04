@@ -8,6 +8,9 @@ namespace Core
 {
     public class HoleController : MonoBehaviour
     {
+        private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_MEDIUM = 1f;
+        private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_HARD = 0.5f;
+        
         [SerializeField] private NormalMoleController normalMole;
         [SerializeField] private BonusMoleController bonusMole;
         [SerializeField] private EvilMoleController evilMole;
@@ -16,16 +19,16 @@ namespace Core
         [SerializeField] private float spawnRateBonusMoleHard;
         [SerializeField] private float spawnRateEvilMoleMedium;
         [SerializeField] private float spawnRateEvilMoleHard;
-        [SerializeField] private float showDurationBonusMoleMedium;
-        [SerializeField] private float showDurationBonusMoleHard;
 
-        private float currentShowDurationNormalMole = 2f;
-        private float currentShowDurationEvilMole = 3f;
+        private float currentShowDurationNormalMole = 1f;
+        private float currentShowDurationEvilMole = 2f;
         private float currentShowDurationBonusMole = 0.1f;
         private float currentSpawnRateBonusMole = 0;
         private float currentSpawnRateEvilMole = 0;
         
         private NpcType currentNpc = NpcType.None;
+
+        private Action OnFinishAnimation;
 
         #region UNITY_METHODS
 
@@ -38,7 +41,15 @@ namespace Core
 
         public void Activate()
         {
+            OnFinishAnimation -= Deactivate;
+            OnFinishAnimation += Deactivate;
             CreateNextNpc();
+        }
+
+        private void Deactivate()
+        {
+            currentNpc = NpcType.None;
+            GameController.Instance.RemoveHoleFromActiveList(name);
         }
 
         private void setNpcVariablesBasedOnDifficulty()
@@ -52,12 +63,12 @@ namespace Core
                 case Difficulty.Medium:
                     currentSpawnRateBonusMole = spawnRateBonusMoleMedium;
                     currentSpawnRateEvilMole = spawnRateEvilMoleMedium;
-                    currentShowDurationBonusMole = showDurationBonusMoleMedium;
+                    currentShowDurationBonusMole = DURATION_SHOW_BONUS_MOLE_IN_SECONDS_MEDIUM;
                     break;
                 case Difficulty.Hard:
                     currentSpawnRateBonusMole = spawnRateBonusMoleHard;
                     currentSpawnRateEvilMole = spawnRateEvilMoleHard;
-                    currentShowDurationBonusMole = showDurationBonusMoleHard;
+                    currentShowDurationBonusMole = DURATION_SHOW_BONUS_MOLE_IN_SECONDS_HARD;
                     break;
                 default:
                     currentSpawnRateBonusMole = 0;
@@ -84,7 +95,7 @@ namespace Core
             {
                 currentNpc = NpcType.EvilMole;
                 evilMole.gameObject.SetActive(true);
-                evilMole.Spawn(currentShowDurationEvilMole);
+                evilMole.Spawn(currentShowDurationEvilMole, OnFinishAnimation);
             }
             else
             {
@@ -93,13 +104,13 @@ namespace Core
                 {
                     currentNpc = NpcType.BonusMole;
                     bonusMole.gameObject.SetActive(true);
-                    bonusMole.Spawn(currentShowDurationBonusMole);
+                    bonusMole.Spawn(currentShowDurationBonusMole, OnFinishAnimation);
                 }
                 else
                 {
                     currentNpc = NpcType.NormalMole;
                     normalMole.gameObject.SetActive(true);
-                    normalMole.Spawn(currentShowDurationNormalMole);
+                    normalMole.Spawn(currentShowDurationNormalMole, OnFinishAnimation);
                 }
             }
         }

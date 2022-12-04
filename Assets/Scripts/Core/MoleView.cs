@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,11 +16,14 @@ namespace Core
         [SerializeField] private Color hitColor;
 
         private float maxShowDuration;
+
+        private Action OnFinishAnimation; 
         
-        public void Show(float showDuration)
+        public void Show(float showDuration, Action OnFinishAnimation)
         {
             image.color = defaultColor;
             maxShowDuration = showDuration;
+            this.OnFinishAnimation = OnFinishAnimation;
             StartCoroutine(CoroutineShow());
         }
 
@@ -45,6 +49,8 @@ namespace Core
             }
 
             transform.localScale = endScale;
+            
+            OnFinishAnimation?.Invoke();
         }
 
         private IEnumerator CoroutineShow()
@@ -81,8 +87,8 @@ namespace Core
             }
 
             transform.localScale = startScale;
-
-
+            
+            OnFinishAnimation?.Invoke();
         }
     }
 }

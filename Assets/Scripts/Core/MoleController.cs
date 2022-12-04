@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Core
 {
@@ -8,8 +8,12 @@ namespace Core
         [SerializeField] protected MoleView moleView;
         
         protected bool isHittable = false;
-        
-        public virtual void Spawn(float showDuration) { }
+
+        public void Spawn(float showDuration, Action OnFinishAnimation)
+        {
+            isHittable = true;
+            moleView.Show(showDuration, OnFinishAnimation);
+        }
         protected virtual void Hit() { }
     }
 }

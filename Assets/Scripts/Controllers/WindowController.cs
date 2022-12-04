@@ -38,18 +38,18 @@ namespace Controllers
         {
             if (windowView.CurrentlyOpenWindow != WindowType.None)
             {
-                if (OnBeforeCloseWindow != null) OnBeforeCloseWindow();
+                OnBeforeCloseWindow?.Invoke();
                 
                 windowView.Hide(windowView.CurrentlyOpenWindow);
 
-                if (OnAfterCloseWindow != null) OnAfterCloseWindow();
+                OnAfterCloseWindow?.Invoke();
             }
 
-            if (OnBeforeOpenWindow != null) OnBeforeOpenWindow(nextWindow);
+            OnBeforeOpenWindow?.Invoke(nextWindow);
             
             windowView.Show(nextWindow);
 
-            if (OnAfterOpenWindow != null) OnAfterOpenWindow(nextWindow);
+            OnAfterOpenWindow?.Invoke(nextWindow);
 
         }
 

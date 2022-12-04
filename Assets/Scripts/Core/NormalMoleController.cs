@@ -20,12 +20,6 @@ namespace Core
 
         #region OVERRIDE_METHODS
 
-        public override void Spawn(float showDuration)
-        {
-            isHittable = true;
-            moleView.Show(showDuration);
-        }
-
         protected override void Hit()
         {
             switch (GameController.Instance.CurrentDifficulty)
