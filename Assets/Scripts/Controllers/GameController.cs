@@ -97,6 +97,11 @@ namespace Controllers
             scoreController.UpdateScore(scoreToAdd);
         }
 
+        public int Score()
+        {
+            return scoreController.Score;
+        }
+
         /// <summary>
         /// time will be added to timer.
         /// negative time to add decreases the time.
