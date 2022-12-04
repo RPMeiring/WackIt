@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class ScoreView : MonoBehaviour
+namespace View
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ScoreView : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private TextMeshProUGUI txtScore;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void DisplayScore(int scoreToDisplay)
+        {
+            txtScore.text = string.Format("Score: {0:D4}", scoreToDisplay);
+        }
     }
 }

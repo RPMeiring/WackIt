@@ -25,7 +25,7 @@ namespace View
             // timeToDisplay += 1f;
             int minutes = Mathf.FloorToInt(timeToDisplay / 60);
             int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-            txtTimer.text = string.Format("{00:00}:{01:00}", minutes, seconds);
+            txtTimer.text = string.Format("Time: {00:00}:{01:00}", minutes, seconds);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Controllers
 {
     public class TimerController : MonoBehaviour
     {
-        private const int MAX_TIMER_IN_SECONDS = 10;
+        private const float MAX_TIMER_IN_SECONDS = 900f;
 
         [SerializeField] private TimerView timerView;
 
