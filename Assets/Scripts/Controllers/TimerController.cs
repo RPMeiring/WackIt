@@ -7,8 +7,6 @@ namespace Controllers
 {
     public class TimerController : MonoBehaviour
     {
-        private const float MAX_TIMER_IN_SECONDS = 900f;
-
         [SerializeField] private TimerView timerView;
 
         private float timer;
@@ -54,14 +52,19 @@ namespace Controllers
             run = true;
         }
 
-        public void InitializeTimer()
+        public void UpdateTime(float timeToAdd)
         {
-            ResetTimer();
+            Timer += timeToAdd;
+        }
+
+        public void InitializeTimer(float startTime)
+        {
+            ResetTimer(startTime);
         }
         
-        private void ResetTimer()
+        private void ResetTimer(float startTime)
         {
-            Timer = MAX_TIMER_IN_SECONDS;
+            Timer = startTime;
             timerView.DisplayTime(Timer);
         }
 

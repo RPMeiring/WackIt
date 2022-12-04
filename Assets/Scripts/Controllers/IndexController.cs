@@ -1,42 +1,54 @@
-using Controllers;
 using General;
 using UnityEngine;
 
-public class IndexController : MonoBehaviour
+namespace Controllers
 {
-    #region SCENE
-    
-    /// <summary>
-    /// Intended for attachment to button in Scene.
-    /// </summary>
-    public void BtnPlay()
+    public class IndexController : MonoBehaviour
     {
-        startGame();
-    }
+        #region SCENE
 
-    /// <summary>
-    /// Intended for attachment to button in Scene.
-    /// </summary>
-    public void BtnHighScore()
-    {
-        checkScores();
-    }
+        public void BtnChangeDifficulty()
+        {
+            changeDifficulty();
+        }
 
-    #endregion
+        /// <summary>
+        /// Intended for attachment to button in Scene.
+        /// </summary>
+        public void BtnPlay()
+        {
+            startGame();
+        }
 
-    /// <summary>
-    /// Go to score window.
-    /// </summary>
-    private void checkScores()
-    {
-        WindowController.Instance.GoToWindow(WindowType.HighScore);
-    }
+        /// <summary>
+        /// Intended for attachment to button in Scene.
+        /// </summary>
+        public void BtnHighScore()
+        {
+            checkScores();
+        }
 
-    /// <summary>
-    /// Start playing main game.
-    /// </summary>
-    private void startGame()
-    {
-        WindowController.Instance.GoToWindow(WindowType.Game);
+        #endregion
+
+        private void changeDifficulty()
+        {
+            GameController.Instance.IncreaseDifficulty();
+        }
+
+        /// <summary>
+        /// Go to score window.
+        /// </summary>
+        private void checkScores()
+        {
+            WindowController.Instance.GoToWindow(WindowType.HighScore);
+        }
+
+        /// <summary>
+        /// Start playing main game.
+        /// </summary>
+        private void startGame()
+        {
+            WindowController.Instance.GoToWindow(WindowType.Game);
+        }
     }
 }

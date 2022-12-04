@@ -22,4 +22,15 @@ namespace General
         Medium,
         Hard
     }
+
+    /// <summary>
+    /// Definition of all the different NPC's that can spawn.
+    /// </summary>
+    public enum NpcType
+    {
+        None,
+        NormalMole,
+        BonusMole,
+        EvilMole
+    }
 }
