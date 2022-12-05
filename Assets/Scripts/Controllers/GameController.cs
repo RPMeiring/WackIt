@@ -3,6 +3,10 @@ using General;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Responsible for keep track of variables that have a wider responsibility than just for the level.
+    /// Ex. game difficulty and score need to be accessed on index screen and gameoverscreen.
+    /// </summary>
     public class GameController : Singleton<GameController>
     {
         public const Difficulty DEFAULT_DIFFICULTY = Difficulty.Easy;
@@ -39,21 +43,30 @@ namespace Controllers
 
         #endregion
 
+        /// <summary>
+        /// Game difficulty is stored so we can access it later when needed.
+        /// Will only reset on appstart. Isn't saved.
+        /// </summary>
         public void IncreaseDifficulty()
         {
             CurrentDifficulty += 1;
             if ((int)CurrentDifficulty == maxDifficulties)
                 CurrentDifficulty = 0;
-            OnGameDifficultyChanged?.Invoke(CurrentDifficulty);
+            OnGameDifficultyChanged?.Invoke(CurrentDifficulty); // event that notifies everyone that depends on a difficulty change and subscribed to event.
         }
 
+        /// <summary>
+        /// Level score is stored so we can access it later on if needed.
+        /// Will be reset each time a level is started.
+        /// </summary>
+        /// <param name="score"></param>
         public void StoreScore(int score)
         {
             currentScore = score;
         }
 
         /// <summary>
-        /// start the game and start timer.
+        /// starts the level and resets the current score.
         /// </summary>
         /// <param name="window"></param>
         private void StartLevel(WindowType window)

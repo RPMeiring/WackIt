@@ -5,6 +5,9 @@ using View;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Responsible for the level timer. Ha an event when timer runs out, most important for level controller
+    /// </summary>
     public class TimerController : MonoBehaviour
     {
         [SerializeField] private TimerView timerView;

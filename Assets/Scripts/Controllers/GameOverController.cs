@@ -1,4 +1,3 @@
-using System;
 using Data;
 using General;
 using TMPro;
@@ -11,6 +10,7 @@ namespace Controllers
     {
         [SerializeField] private GameOverView gameOverView;
         
+        // limitations for input (for alias) on Game Over screen
         private const string validChars = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
         private const char emptyChar = '\0';
         private const int charLimit = 3;

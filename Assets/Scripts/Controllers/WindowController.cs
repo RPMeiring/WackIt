@@ -4,6 +4,10 @@ using View;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Responsible for the switching of windows.
+    /// Has multiple events useful for expanding on this game.
+    /// </summary>
     public class WindowController : Singleton<WindowController>
     {
         [SerializeField] private WindowView windowView;

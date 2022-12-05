@@ -1,4 +1,3 @@
-using Controllers;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ namespace View
         public void FormatScreen(int score, bool isNewHighScore)
         {
             if (isNewHighScore)
-                ResetAliasInput();
+                resetAliasInput();
             
             scoreTitle.SetActive(!isNewHighScore);
             newHighScoreTitle.SetActive(isNewHighScore);
@@ -31,7 +30,7 @@ namespace View
             txtScore.text = $"{score:D4}";
         }
 
-        private void ResetAliasInput()
+        private void resetAliasInput()
         {
             aliasInputField.text = "";
         }

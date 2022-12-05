@@ -6,6 +6,9 @@ using Random = UnityEngine.Random;
 
 namespace Core
 {
+    /// <summary>
+    /// Coroutines are used for animating the moles.
+    /// </summary>
     public class MoleView : MonoBehaviour
     {
         private const float SPAWN_SCALE = 0f;

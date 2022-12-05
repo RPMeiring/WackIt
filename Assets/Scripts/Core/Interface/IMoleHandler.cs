@@ -1,8 +1,14 @@
 using System;
 
-public interface IMoleHandler
+namespace Core.Interface
 {
-    void Spawn(float showDuration, Action OnFinishAnimation);
-    void DeSpawn();
-    void Hit();
+    /// <summary>
+    /// interface for the npc's in the level.
+    /// </summary>
+    public interface IMoleHandler
+    {
+        void Spawn(float showDuration, Action OnFinishAnimation);
+        void DeSpawn();
+        void Hit();
+    }
 }

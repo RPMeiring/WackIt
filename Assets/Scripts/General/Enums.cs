@@ -14,7 +14,6 @@ namespace General
 
     /// <summary>
     /// Definition of the different difficulty settings.
-    /// Has impact on timing and NPC's spawns.
     /// </summary>
     public enum Difficulty
     {

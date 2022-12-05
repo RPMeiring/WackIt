@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Controllers;
+using Core.Interface;
 using General;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -46,6 +47,9 @@ namespace Core
 
         #endregion
 
+        /// <summary>
+        /// Activated the hole, so a npc can spawn.
+        /// </summary>
         public void Activate()
         {
             OnFinishAnimation -= Deactivate;
@@ -53,6 +57,10 @@ namespace Core
             CreateNextNpc();
         }
 
+        /// <summary>
+        /// DeActivates the hole so no npc can spawn.
+        /// also makes sure that existing npc will despawn.
+        /// </summary>
         public void Deactivate()
         {
             DeSpawnCurrentNpc();
@@ -60,12 +68,18 @@ namespace Core
             LevelController.Instance.DeactivateSpawn(name);
         }
 
+        /// <summary>
+        /// Despawn an npc if its shown.
+        /// </summary>
         private void DeSpawnCurrentNpc()
         {
             if (currentNpc != null)
                 currentNpc.DeSpawn();
         }
 
+        /// <summary>
+        /// Each time the level is started, the npc variables should be configured based on game difficulty.
+        /// </summary>
         private void setNpcVariablesBasedOnDifficulty()
         {
             switch (GameController.Instance.CurrentDifficulty)

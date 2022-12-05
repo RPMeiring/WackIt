@@ -3,6 +3,9 @@ using View;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Keeps track of the score that the player gets.
+    /// </summary>
     public class ScoreController : MonoBehaviour
     {
         private const int START_SCORE = 0;
@@ -17,6 +20,10 @@ namespace Controllers
             private set { score = value; }
         }
 
+        /// <summary>
+        /// Score will be updated based on the score that needs to be added.
+        /// </summary>
+        /// <param name="scoreToAdd"></param>
         public void UpdateScore(int scoreToAdd)
         {
             score += scoreToAdd;
@@ -25,7 +32,7 @@ namespace Controllers
 
         public void ResetScore()
         {
-            score = 0;
+            score = START_SCORE;
             scoreView.DisplayScore(score);
         }
     }

@@ -5,6 +5,10 @@ using SaveLoad;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Keeps track of the highscore list.
+    /// Also responsible for adjusting the list if needed.
+    /// </summary>
     public class HighScoreDataController : Singleton<HighScoreDataController>
     {
         private const int MAX_ENTRIES_IN_HIGHSCORE_LIST = 10;
@@ -56,6 +60,7 @@ namespace Controllers
 
         /// <summary>
         /// Compares given score to last entry of high score list.
+        /// last entry is the lowest score.
         /// </summary>
         /// <param name="score"></param>
         /// <returns></returns>
@@ -70,6 +75,9 @@ namespace Controllers
             HighScoreDataList = SaveLoadController.Instance.LoadHighScores();
         }
 
+        /// <summary>
+        /// Sorted the order by descending. First entry is the highest score.
+        /// </summary>
         private void sortData()
         {
             if (HighScoreDataList != null)

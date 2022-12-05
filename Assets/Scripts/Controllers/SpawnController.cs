@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Respponsible for activating the different Spawn points.
+    /// All npc are being referenced in a pool for optimization.
+    /// </summary>
     public class SpawnController : MonoBehaviour
     {
         private const int MAX_HOLES_ACTIVE_EASY = 2;

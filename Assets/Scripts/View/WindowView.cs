@@ -5,6 +5,11 @@ using UnityEngine;
 
 namespace View
 {
+    /// <summary>
+    /// Responsible for showing the required window.
+    /// Animations are currently not supported, but it is easy expendable. (show and hide alr have a parameter)
+    /// All windows are stored in a dictionary, to locate wanted window easily.
+    /// </summary>
     public class WindowView : MonoBehaviour
     {
         [Serializable]

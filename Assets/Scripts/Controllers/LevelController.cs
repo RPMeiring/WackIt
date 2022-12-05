@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace Controllers
 {
+    /// <summary>
+    /// Responsible for everything that is needed for the level.
+    /// Timer, Score, Countdown timer, spawn controller.
+    /// Level is ending only when timer reaches 0;
+    /// </summary>
     public class LevelController : Singleton<LevelController>
     {
         private const float MAX_TIMER_IN_SECONDS_EASY = 90f;        

@@ -1,11 +1,15 @@
 using System;
 using Controllers;
+using Core.Interface;
 using General;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Core
 {
+    /// <summary>
+    /// Special mole for extra points.
+    /// </summary>
     public class BonusMoleController : MonoBehaviour, IMoleHandler, IPointerDownHandler
     {
         private const int SCORE = 25;
@@ -16,6 +20,10 @@ namespace Core
 
         #region UNITY_METHODS
 
+        /// <summary>
+        /// Event for when user clicks on this object.
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
             if (isHittable) Hit();

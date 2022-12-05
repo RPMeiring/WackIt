@@ -4,6 +4,11 @@ using UnityEngine;
 
 namespace View
 {
+    /// <summary>
+    /// Responsible for showing the list of all saved highscores.
+    /// Atm delete and create all entries when HighScore Screen is being shown.
+    /// Entries are instantiated and not reused.
+    /// </summary>
     public class HighScoreView : MonoBehaviour
     {
         [SerializeField] private GameObject noHighScoreTxtContainer;
@@ -25,8 +30,8 @@ namespace View
                 int rank = i + 1;
                 HighScoreData highScoreData = highScores[i];
                 HighScoreEntryView entry = Instantiate(highScoreEntryPrefab, highScoreEntryContainer);
-                entry.Format(rank, highScoreData.Score, highScoreData.Alias, DetermineColorBasedOnRank(rank),
-                    DetermineBackgroundColorBasedonRank(rank));
+                entry.Format(rank, highScoreData.Score, highScoreData.Alias, determineColorBasedOnRank(rank),
+                    determineBackgroundColorBasedOnRank(rank));
             }
         }
 
@@ -47,12 +52,12 @@ namespace View
             // to be implemented
         }
 
-        private Color DetermineBackgroundColorBasedonRank(int rank)
+        private Color determineBackgroundColorBasedOnRank(int rank)
         {
             return rank % 2 == 0 ? evenPlaceBackgroundColor : unevenPlaceBackgroundColor;
         }
 
-        private Color DetermineColorBasedOnRank(int rank)
+        private Color determineColorBasedOnRank(int rank)
         {
             return rank == 1
                 ? firstPlaceColor

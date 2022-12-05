@@ -1,11 +1,15 @@
 using System;
 using Controllers;
+using Core.Interface;
 using General;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Core
 {
+    /// <summary>
+    /// Normal mole with low score amount.
+    /// </summary>
     public class NormalMoleController : MonoBehaviour, IMoleHandler, IPointerDownHandler
     {
         private const int SCORE = 5;
@@ -17,6 +21,10 @@ namespace Core
 
         #region UNITY_METHODS
 
+        /// <summary>
+        /// Event for when user clicks on this object.
+        /// </summary>
+        /// <param name="eventData"></param>
         public void OnPointerDown(PointerEventData eventData)
         {
             if (isHittable) Hit();
