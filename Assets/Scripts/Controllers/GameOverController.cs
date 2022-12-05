@@ -1,4 +1,5 @@
 using System;
+using Data;
 using General;
 using TMPro;
 using UnityEngine;
@@ -38,6 +39,10 @@ namespace Controllers
 
         public void BtnSave()
         {
+            HighScoreData highScoreData = new HighScoreData
+                { Alias = aliasInputField.text, Score = GameController.Instance.Score() };
+            HighScoreDataController.Instance.UpdateData(highScoreData);
+            HighScoreDataController.Instance.SaveData();
             WindowController.Instance.GoToWindow(WindowType.HighScore);
         }
 

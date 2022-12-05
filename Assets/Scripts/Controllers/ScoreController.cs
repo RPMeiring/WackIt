@@ -22,5 +22,11 @@ namespace Controllers
             score += scoreToAdd;
             scoreView.DisplayScore(score);
         }
+
+        public void ResetScore()
+        {
+            score = 0;
+            scoreView.DisplayScore(score);
+        }
     }
 }

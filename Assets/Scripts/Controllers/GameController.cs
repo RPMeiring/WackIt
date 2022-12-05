@@ -60,19 +60,7 @@ namespace Controllers
 
         private void Update()
         {
-            if (gameIsRunning)
-            {
-                if (activeHoles.Count < currentMaxHolesActive)
-                {
-                    int index = UnityEngine.Random.Range(0, allHolesInScene.Length);
-                    HoleController selectedHole = allHolesInScene[index];
-                    if (!activeHoles.ContainsKey(selectedHole.name))
-                    {
-                        activeHoles.Add(selectedHole.name, selectedHole);
-                        selectedHole.Activate();
-                    }
-                }
-            }
+            HandlesActivationOfHoles();
         }
 
         #endregion
@@ -119,7 +107,41 @@ namespace Controllers
                 CurrentDifficulty = 0;
             OnGameDifficultyChanged?.Invoke(CurrentDifficulty);
         }
+
+        /// <summary>
+        /// Activate a random hole if the maximum is not reached yet.
+        /// Each hole is a spawn point for an npc
+        /// Each Hole (controller) chooses an npc to spawn.
+        /// </summary>
+        private void HandlesActivationOfHoles()
+        {
+            if (gameIsRunning)
+            {
+                if (activeHoles.Count < currentMaxHolesActive)
+                {
+                    int index = UnityEngine.Random.Range(0, allHolesInScene.Length);
+                    HoleController selectedHole = allHolesInScene[index];
+                    if (!activeHoles.ContainsKey(selectedHole.name))
+                    {
+                        activeHoles.Add(selectedHole.name, selectedHole);
+                        selectedHole.Activate();
+                    }
+                }
+            }
+        }
+
+        private void DeactivateAllHoles()
+        {
+            foreach (HoleController hole in allHolesInScene)
+            {
+                hole.Deactivate();
+            }
+        }
         
+        /// <summary>
+        /// Reset all game settings based on difficulty when needed.
+        /// </summary>
+        /// <param name="window"></param>
         private void InitializeNewGame(WindowType window)
         {
             if (window != WindowType.Game) return;
@@ -128,9 +150,15 @@ namespace Controllers
                 (CurrentDifficulty == Difficulty.Medium ? MAX_HOLES_ACTIVE_MEDIUM : MAX_HOLES_ACTIVE_HARD);
             float startTime = CurrentDifficulty == Difficulty.Easy ? MAX_TIMER_IN_SECONDS_EASY : 
                 (CurrentDifficulty == Difficulty.Medium ? MAX_TIMER_IN_SECONDS_MEDIUM : MAX_TIMER_IN_SECONDS_HARD); 
+            
+            scoreController.ResetScore();
             timerController.InitializeTimer(startTime);
         }
 
+        /// <summary>
+        /// start the game and start timer.
+        /// </summary>
+        /// <param name="window"></param>
         private void StartGame(WindowType window)
         {
             if (window != WindowType.Game) return;
@@ -139,9 +167,13 @@ namespace Controllers
             GameIsRunning = true;
         }
 
+        /// <summary>
+        /// Clear Npc's, stop the game and go to game over screen
+        /// </summary>
         private void GameOver()
         {
             GameIsRunning = false;
+            DeactivateAllHoles();
             WindowController.Instance.GoToWindow(WindowType.GameOver);
         }
     }

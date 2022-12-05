@@ -17,7 +17,16 @@ namespace Core
 
         private float maxShowDuration;
 
-        private Action OnFinishAnimation; 
+        private Action OnFinishAnimation;
+
+        #region UNITY_METHODS
+
+        private void OnDisable()
+        {
+            
+        }
+
+        #endregion
         
         public void Show(float showDuration, Action OnFinishAnimation)
         {
@@ -32,6 +41,13 @@ namespace Core
             StopAllCoroutines();        // Make sure all animation stop.
             image.color = hitColor;
             StartCoroutine(Hide());
+        }
+        
+        public void ForceHideNoAnimation()
+        {
+            StopAllCoroutines();
+            Vector3 endScale = new Vector3(SPAWN_SCALE, SPAWN_SCALE, SPAWN_SCALE);
+            transform.localScale = endScale;
         }
 
         public IEnumerator Hide()

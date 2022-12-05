@@ -14,6 +14,13 @@ namespace Core
             isHittable = true;
             moleView.Show(showDuration, OnFinishAnimation);
         }
+
+        public void Despawn()
+        {
+            isHittable = false;
+            moleView.ForceHideNoAnimation();
+        }
+        
         protected virtual void Hit() { }
     }
 }

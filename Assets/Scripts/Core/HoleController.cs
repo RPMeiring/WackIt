@@ -32,7 +32,7 @@ namespace Core
 
         #region UNITY_METHODS
 
-        private void Start()
+        private void OnEnable()
         {
             setNpcVariablesBasedOnDifficulty();
         }
@@ -46,10 +46,29 @@ namespace Core
             CreateNextNpc();
         }
 
-        private void Deactivate()
+        public void Deactivate()
         {
+            DespawnCurrentNpc();
             currentNpc = NpcType.None;
             GameController.Instance.RemoveHoleFromActiveList(name);
+        }
+
+        private void DespawnCurrentNpc()
+        {
+            switch (currentNpc)
+            {
+                case NpcType.NormalMole:
+                    normalMole.Despawn();
+                    break;
+                case NpcType.BonusMole:
+                    bonusMole.Despawn();
+                    break;
+                case NpcType.EvilMole:
+                    evilMole.Despawn();
+                    break;
+                default:
+                    break;    
+            }
         }
 
         private void setNpcVariablesBasedOnDifficulty()
