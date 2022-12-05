@@ -410,9 +410,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fff0e253ebc44b881d98687f95d7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMole: {fileID: 3601725897787587681}
-  bonusMole: {fileID: 3601725898361354383}
-  evilMole: {fileID: 3601725898081246921}
+  moleOptions:
+  - Mole: {fileID: 3601725897787587711}
+    Type: 1
+  - Mole: {fileID: 3601725898361354379}
+    Type: 2
+  - Mole: {fileID: 3601725898081246917}
+    Type: 3
   spawnRateBonusMoleMedium: 0.25
   spawnRateBonusMoleHard: 0.4
   spawnRateEvilMoleMedium: 0.25

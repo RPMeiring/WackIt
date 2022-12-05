@@ -1,3 +1,4 @@
+using System;
 using Controllers;
 using General;
 using UnityEngine;
@@ -5,10 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace Core
 {
-    public class EvilMoleController : MoleController, IPointerDownHandler
+    public class EvilMoleController : MonoBehaviour, IMoleHandler, IPointerDownHandler
     {
         private const int SCORE_PENALTY = -10;
         private const float TIME_PENALTY = -10f;
+
+        [SerializeField] private MoleView moleView;
+        
+        private bool isHittable = false;
 
         #region UNITY_METHODS
 
@@ -18,10 +23,20 @@ namespace Core
         }
 
         #endregion
+        
+        public void Spawn(float showDuration, Action OnFinishAnimation)
+        {
+            isHittable = true;
+            moleView.Show(showDuration, OnFinishAnimation);
+        }
 
-        #region OVERRIDE_METHODS
-
-        protected override void Hit()
+        public void DeSpawn()
+        {
+            isHittable = false;
+            moleView.ForceHideNoAnimation();
+        }
+        
+        public void Hit()
         {
             switch (GameController.Instance.CurrentDifficulty)
             {
@@ -44,7 +59,5 @@ namespace Core
                     break;
             }
         }
-
-        #endregion
     }
 }

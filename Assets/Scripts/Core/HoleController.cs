@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Controllers;
 using General;
 using UnityEngine;
@@ -6,15 +8,19 @@ using Random = UnityEngine.Random;
 
 namespace Core
 {
+    [Serializable]
+    public struct MoleDefinition
+    {
+        public GameObject Mole;
+        public NpcType Type;
+    }
+    
     public class HoleController : MonoBehaviour
     {
         private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_MEDIUM = 1f;
         private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_HARD = 0.3f;
-        
-        [SerializeField] private NormalMoleController normalMole;
-        [SerializeField] private BonusMoleController bonusMole;
-        [SerializeField] private EvilMoleController evilMole;
 
+        [SerializeField] private List<MoleDefinition> moleOptions;
         [SerializeField] private float spawnRateBonusMoleMedium;
         [SerializeField] private float spawnRateBonusMoleHard;
         [SerializeField] private float spawnRateEvilMoleMedium;
@@ -25,8 +31,9 @@ namespace Core
         private float currentShowDurationBonusMole = 0.1f;
         private float currentSpawnRateBonusMole = 0;
         private float currentSpawnRateEvilMole = 0;
-        
-        private NpcType currentNpc = NpcType.None;
+        private float currentMoleDuration = 0;
+
+        private IMoleHandler currentNpc;
 
         private Action OnFinishAnimation;
 
@@ -48,27 +55,15 @@ namespace Core
 
         public void Deactivate()
         {
-            DespawnCurrentNpc();
-            currentNpc = NpcType.None;
+            DeSpawnCurrentNpc();
+            currentNpc = null;
             LevelController.Instance.DeactivateSpawn(name);
         }
 
-        private void DespawnCurrentNpc()
+        private void DeSpawnCurrentNpc()
         {
-            switch (currentNpc)
-            {
-                case NpcType.NormalMole:
-                    normalMole.Despawn();
-                    break;
-                case NpcType.BonusMole:
-                    bonusMole.Despawn();
-                    break;
-                case NpcType.EvilMole:
-                    evilMole.Despawn();
-                    break;
-                default:
-                    break;    
-            }
+            if (currentNpc != null)
+                currentNpc.DeSpawn();
         }
 
         private void setNpcVariablesBasedOnDifficulty()
@@ -102,7 +97,7 @@ namespace Core
         private void CreateNextNpc()
         {
             // Making sure there is no Npc showing.
-            if (currentNpc != NpcType.None)
+            if (currentNpc != null)
             {
                 string warningMsg = string.Format("There should still be an npc: {0}", currentNpc.ToString());
                 Debug.LogWarning(warningMsg);
@@ -112,26 +107,33 @@ namespace Core
             float random = Random.Range(0f, 1f);
             if (random < currentSpawnRateEvilMole)
             {
-                currentNpc = NpcType.EvilMole;
-                evilMole.gameObject.SetActive(true);
-                evilMole.Spawn(currentShowDurationEvilMole, OnFinishAnimation);
+                currentNpc = moleOptions.Single(s => s.Type == NpcType.EvilMole).Mole.GetComponent<IMoleHandler>();
+                currentMoleDuration = currentShowDurationEvilMole;
+                // evilMole.gameObject.SetActive(true);
+                // evilMole.Spawn(currentShowDurationEvilMole, OnFinishAnimation);
             }
             else
             {
                 random = Random.Range(0f, 1f);
                 if (random < currentSpawnRateBonusMole)
                 {
-                    currentNpc = NpcType.BonusMole;
-                    bonusMole.gameObject.SetActive(true);
-                    bonusMole.Spawn(currentShowDurationBonusMole, OnFinishAnimation);
+                    currentNpc = moleOptions.Single(s => s.Type == NpcType.BonusMole).Mole.GetComponent<IMoleHandler>();
+                    currentMoleDuration = currentShowDurationBonusMole;
+                    // currentNpc = NpcType.BonusMole;
+                    // bonusMole.gameObject.SetActive(true);
+                    // bonusMole.Spawn(currentShowDurationBonusMole, OnFinishAnimation);
                 }
                 else
                 {
-                    currentNpc = NpcType.NormalMole;
-                    normalMole.gameObject.SetActive(true);
-                    normalMole.Spawn(currentShowDurationNormalMole, OnFinishAnimation);
+                    currentNpc = moleOptions.Single(s => s.Type == NpcType.NormalMole).Mole.GetComponent<IMoleHandler>();
+                    currentMoleDuration = currentShowDurationNormalMole;
+                    // currentNpc = NpcType.NormalMole;
+                    // normalMole.gameObject.SetActive(true);
+                    // normalMole.Spawn(currentShowDurationNormalMole, OnFinishAnimation);
                 }
             }
+            
+            currentNpc.Spawn(currentMoleDuration, OnFinishAnimation);
         }
     }
 }

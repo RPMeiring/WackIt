@@ -18,15 +18,6 @@ namespace Core
         private float maxShowDuration;
 
         private Action OnFinishAnimation;
-
-        #region UNITY_METHODS
-
-        private void OnDisable()
-        {
-            
-        }
-
-        #endregion
         
         public void Show(float showDuration, Action OnFinishAnimation)
         {

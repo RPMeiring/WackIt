@@ -1,13 +1,19 @@
 using System;
 using Controllers;
 using General;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Core
 {
-    public class NormalMoleController : MoleController, IPointerDownHandler
+    public class NormalMoleController : MonoBehaviour, IMoleHandler, IPointerDownHandler
     {
         private const int SCORE = 5;
+        
+        [SerializeField] private MoleView moleView;
+        
+        private bool isHittable = false;
+
 
         #region UNITY_METHODS
 
@@ -17,10 +23,21 @@ namespace Core
         }
 
         #endregion
+        
+        public void Spawn(float showDuration, Action OnFinishAnimation)
+        {
+            gameObject.SetActive(true);
+            isHittable = true;
+            moleView.Show(showDuration, OnFinishAnimation);
+        }
 
-        #region OVERRIDE_METHODS
+        public void DeSpawn()
+        {
+            isHittable = false;
+            moleView.ForceHideNoAnimation();
+        }
 
-        protected override void Hit()
+        public void Hit()
         {
             switch (GameController.Instance.CurrentDifficulty)
             {
@@ -35,7 +52,5 @@ namespace Core
                     break;
             }
         }
-
-        #endregion
     }
 }
