@@ -52,7 +52,7 @@ namespace Controllers
             OnAfterOpenWindow?.Invoke(nextWindow);
 
         }
-
+        
         /// <summary>
         /// Open correct window at App start
         /// </summary>

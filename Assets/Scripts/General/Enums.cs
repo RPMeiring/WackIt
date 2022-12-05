@@ -7,7 +7,7 @@ namespace General
     {
         None,
         Index,
-        Game,
+        Level,
         GameOver,
         HighScore
     }

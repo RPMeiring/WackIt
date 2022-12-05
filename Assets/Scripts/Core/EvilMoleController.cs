@@ -30,13 +30,13 @@ namespace Core
                     Debug.LogWarning(warningMsg);
                     break;
                 case Difficulty.Medium:
-                    GameController.Instance.AddScore(SCORE_PENALTY);
+                    LevelController.Instance.AddScore(SCORE_PENALTY);
                     isHittable = false;
                     moleView.Hit();
                     break;
                 case Difficulty.Hard:
-                    GameController.Instance.AddScore(SCORE_PENALTY);
-                    GameController.Instance.AddTime(TIME_PENALTY);
+                    LevelController.Instance.AddScore(SCORE_PENALTY);
+                    LevelController.Instance.AddTime(TIME_PENALTY);
                     isHittable = false;
                     moleView.Hit();
                     break;

@@ -342,6 +342,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!1 &21895308
@@ -649,6 +657,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!1 &105215806
@@ -923,18 +939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d1b3e2497f14d9f817aa91d7939792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allHolesInScene:
-  - {fileID: 1085704647}
-  - {fileID: 930385213}
-  - {fileID: 1344880799}
-  - {fileID: 758130480}
-  - {fileID: 1028531377}
-  - {fileID: 1001834644}
-  - {fileID: 1804523048}
-  - {fileID: 1997742157}
-  - {fileID: 2129531706}
-  timerController: {fileID: 1047709298}
-  scoreController: {fileID: 1208943958}
 --- !u!114 &124831046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1292,6 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543eae0935040498bb5b53135c9c2414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverView: {fileID: 194667695}
   aliasInputField: {fileID: 1522777887}
 --- !u!114 &194667695
 MonoBehaviour:
@@ -1540,6 +1545,14 @@ PrefabInstance:
     - target: {fileID: 3601725899427931959, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
@@ -2746,6 +2759,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!1 &819280785
@@ -3588,6 +3609,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!114 &1085704647 stripped
@@ -3977,6 +4006,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!1 &1245695556
@@ -4058,8 +4095,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1248381366}
+  - component: {fileID: 1248381368}
+  - component: {fileID: 1248381367}
   m_Layer: 5
-  m_Name: Game
+  m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4087,6 +4126,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1248381367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248381365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9cb9c0550d54c7fa2300cb20d8bb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holePool:
+  - {fileID: 1085704647}
+  - {fileID: 930385213}
+  - {fileID: 1344880799}
+  - {fileID: 758130480}
+  - {fileID: 1028531377}
+  - {fileID: 1001834644}
+  - {fileID: 1804523048}
+  - {fileID: 1997742157}
+  - {fileID: 2129531706}
+--- !u!114 &1248381368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248381365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fec50bc5c7a04d5c951f939f3252213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnController: {fileID: 1248381367}
+  timerController: {fileID: 1047709298}
+  scoreController: {fileID: 1208943958}
 --- !u!1 &1271227665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,6 +6783,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!114 &1997742157 stripped
@@ -6971,6 +7055,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
 --- !u!1 &2116363817
@@ -7215,6 +7307,14 @@ PrefabInstance:
     - target: {fileID: 3601725899427931959, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateEvilMoleHard
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601725899427931962, guid: 3690e8a5a31304b2a88798236f753969, type: 3}
+      propertyPath: spawnRateBonusMoleHard
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3690e8a5a31304b2a88798236f753969, type: 3}

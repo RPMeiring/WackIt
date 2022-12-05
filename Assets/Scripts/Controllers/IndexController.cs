@@ -48,7 +48,7 @@ namespace Controllers
         /// </summary>
         private void startGame()
         {
-            WindowController.Instance.GoToWindow(WindowType.Game);
+            WindowController.Instance.GoToWindow(WindowType.Level);
         }
     }
 }

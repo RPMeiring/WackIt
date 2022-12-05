@@ -30,7 +30,7 @@ namespace Core
                     break;
                 case Difficulty.Medium:
                 case Difficulty.Hard:
-                    GameController.Instance.AddScore(SCORE);
+                    LevelController.Instance.AddScore(SCORE);
                     isHittable = false;
                     moleView.Hit();
                     break;

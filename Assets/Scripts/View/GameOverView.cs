@@ -12,32 +12,16 @@ namespace View
         [SerializeField] private GameObject closeButton;
         [SerializeField] private GameObject saveButton;
         [SerializeField] private TextMeshProUGUI txtScore;
-        
-        private bool isNewHighScore = true;
-        
-        #region UNITY_METHODS
-
-        private void OnEnable()
-        {
-            int score = GameController.Instance.Score();
-            isNewHighScore = HighScoreDataController.Instance.IsScoreNewHighScore(score);
-            ResetTextInput();
-            FormatScreen(score);
-        }
-
-        #endregion
-
-        private void ResetTextInput()
-        {
-            aliasInputField.text = "";
-        }
 
         /// <summary>
         /// Set correct fields based on getting a new high score.
         /// Show score.
         /// </summary>
-        private void FormatScreen(int score)
+        public void FormatScreen(int score, bool isNewHighScore)
         {
+            if (isNewHighScore)
+                ResetAliasInput();
+            
             scoreTitle.SetActive(!isNewHighScore);
             newHighScoreTitle.SetActive(isNewHighScore);
             aliasInputField.gameObject.SetActive(isNewHighScore);
@@ -45,6 +29,11 @@ namespace View
             saveButton.SetActive(isNewHighScore);
 
             txtScore.text = string.Format("{0:D4}",score);
+        }
+
+        private void ResetAliasInput()
+        {
+            aliasInputField.text = "";
         }
     }
 }

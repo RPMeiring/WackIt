@@ -3,11 +3,14 @@ using Data;
 using General;
 using TMPro;
 using UnityEngine;
+using View;
 
 namespace Controllers
 {
     public class GameOverController : MonoBehaviour
     {
+        [SerializeField] private GameOverView gameOverView;
+        
         private const string validChars = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
         private const char emptyChar = '\0';
         private const int charLimit = 3;
@@ -28,6 +31,12 @@ namespace Controllers
             aliasInputField.onValidateInput += OnValidateInput;
         }
 
+        private void OnEnable()
+        {
+            int score = GameController.Instance.CurrentScore;
+            gameOverView.FormatScreen(score, HighScoreDataController.Instance.IsScoreNewHighScore(score));
+        }
+
         #endregion
 
         #region SCENE
@@ -40,7 +49,7 @@ namespace Controllers
         public void BtnSave()
         {
             HighScoreData highScoreData = new HighScoreData
-                { Alias = aliasInputField.text, Score = GameController.Instance.Score() };
+                { Alias = aliasInputField.text, Score = GameController.Instance.CurrentScore };
             HighScoreDataController.Instance.UpdateData(highScoreData);
             HighScoreDataController.Instance.SaveData();
             WindowController.Instance.GoToWindow(WindowType.HighScore);

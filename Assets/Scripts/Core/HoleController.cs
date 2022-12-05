@@ -9,7 +9,7 @@ namespace Core
     public class HoleController : MonoBehaviour
     {
         private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_MEDIUM = 1f;
-        private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_HARD = 0.5f;
+        private const float DURATION_SHOW_BONUS_MOLE_IN_SECONDS_HARD = 0.3f;
         
         [SerializeField] private NormalMoleController normalMole;
         [SerializeField] private BonusMoleController bonusMole;
@@ -50,7 +50,7 @@ namespace Core
         {
             DespawnCurrentNpc();
             currentNpc = NpcType.None;
-            GameController.Instance.RemoveHoleFromActiveList(name);
+            LevelController.Instance.DeactivateSpawn(name);
         }
 
         private void DespawnCurrentNpc()

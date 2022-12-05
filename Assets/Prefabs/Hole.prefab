@@ -414,8 +414,6 @@ MonoBehaviour:
   bonusMole: {fileID: 3601725898361354383}
   evilMole: {fileID: 3601725898081246921}
   spawnRateBonusMoleMedium: 0.25
-  spawnRateBonusMoleHard: 0.3
+  spawnRateBonusMoleHard: 0.4
   spawnRateEvilMoleMedium: 0.25
-  spawnRateEvilMoleHard: 0.3
-  showDurationBonusMoleMedium: 2
-  showDurationBonusMoleHard: 1
+  spawnRateEvilMoleHard: 0.6
