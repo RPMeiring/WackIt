@@ -9,7 +9,7 @@ namespace View
 
         public void DisplayScore(int scoreToDisplay)
         {
-            txtScore.text = string.Format("Score: {0:D4}", scoreToDisplay);
+            txtScore.text = $"Score: {scoreToDisplay:D4}";
         }
     }
 }

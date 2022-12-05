@@ -31,7 +31,6 @@ namespace Controllers
                 if (Timer > 0f)
                 {
                     Timer -= Time.deltaTime;
-                    // Debug.Log(string.Format("timer: {0}", Timer));
                     timerView.DisplayTime(Timer);
                 }
                 else
@@ -40,7 +39,7 @@ namespace Controllers
                     timerView.DisplayTime(Timer);
                     run = false;
                     
-                    if (OnTimerRunsOut != null) OnTimerRunsOut();
+                    OnTimerRunsOut?.Invoke();
                 }
             }
         }

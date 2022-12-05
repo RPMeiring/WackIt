@@ -28,7 +28,7 @@ namespace View
             closeButton.SetActive(!isNewHighScore);
             saveButton.SetActive(isNewHighScore);
 
-            txtScore.text = string.Format("{0:D4}",score);
+            txtScore.text = $"{score:D4}";
         }
 
         private void ResetAliasInput()

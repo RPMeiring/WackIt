@@ -7,15 +7,6 @@ namespace View
     {
         [SerializeField] private TextMeshProUGUI txtTimer;
 
-        #region UNITY_METHODS
-
-        private void Start()
-        {
-
-        }
-
-        #endregion
-
         /// <summary>
         /// Displays the time in 00:00 format.
         /// </summary>
@@ -25,7 +16,7 @@ namespace View
             // timeToDisplay += 1f;
             int minutes = Mathf.FloorToInt(timeToDisplay / 60);
             int seconds = Mathf.FloorToInt(timeToDisplay % 60);
-            txtTimer.text = string.Format("Time: {00:00}:{01:00}", minutes, seconds);
+            txtTimer.text = $"Time: {minutes:00}:{seconds:00}";
         }
     }
 }

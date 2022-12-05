@@ -8,7 +8,8 @@ namespace Controllers
         private const float MAX_TIMER_IN_SECONDS_EASY = 90f;        
         private const float MAX_TIMER_IN_SECONDS_MEDIUM = 60f;
         private const float MAX_TIMER_IN_SECONDS_HARD = 60f;
-        
+
+        [SerializeField] private CountDownController countDownController;
         [SerializeField] private SpawnController spawnController;
         [SerializeField] private TimerController timerController;
         [SerializeField] private ScoreController scoreController;
@@ -27,6 +28,9 @@ namespace Controllers
         {
             TimerController.OnTimerRunsOut -= GameOver;
             TimerController.OnTimerRunsOut += GameOver;
+
+            CountDownController.OnCountDownFinished -= StartLevel;
+            CountDownController.OnCountDownFinished += StartLevel;
         }
 
         #endregion
@@ -60,9 +64,13 @@ namespace Controllers
         {
             scoreController.ResetScore();
             timerController.InitializeTimer(DetermineTimer());
-            timerController.StartTimer();
             spawnController.Initialize();
-            
+            countDownController.StartCountDown();
+        }
+
+        void StartLevel()
+        {
+            timerController.StartTimer();
             IsRunning = true;
         }
 
