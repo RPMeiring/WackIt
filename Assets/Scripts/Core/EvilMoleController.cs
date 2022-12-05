@@ -26,6 +26,7 @@ namespace Core
         
         public void Spawn(float showDuration, Action OnFinishAnimation)
         {
+            gameObject.SetActive(true);
             isHittable = true;
             moleView.Show(showDuration, OnFinishAnimation);
         }
@@ -34,6 +35,7 @@ namespace Core
         {
             isHittable = false;
             moleView.ForceHideNoAnimation();
+            gameObject.SetActive(false);
         }
         
         public void Hit()

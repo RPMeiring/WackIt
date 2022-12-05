@@ -35,6 +35,7 @@ namespace Core
         {
             isHittable = false;
             moleView.ForceHideNoAnimation();
+            gameObject.SetActive(false);
         }
 
         public void Hit()

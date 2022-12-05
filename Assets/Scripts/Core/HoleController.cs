@@ -109,8 +109,6 @@ namespace Core
             {
                 currentNpc = moleOptions.Single(s => s.Type == NpcType.EvilMole).Mole.GetComponent<IMoleHandler>();
                 currentMoleDuration = currentShowDurationEvilMole;
-                // evilMole.gameObject.SetActive(true);
-                // evilMole.Spawn(currentShowDurationEvilMole, OnFinishAnimation);
             }
             else
             {
@@ -119,17 +117,11 @@ namespace Core
                 {
                     currentNpc = moleOptions.Single(s => s.Type == NpcType.BonusMole).Mole.GetComponent<IMoleHandler>();
                     currentMoleDuration = currentShowDurationBonusMole;
-                    // currentNpc = NpcType.BonusMole;
-                    // bonusMole.gameObject.SetActive(true);
-                    // bonusMole.Spawn(currentShowDurationBonusMole, OnFinishAnimation);
                 }
                 else
                 {
                     currentNpc = moleOptions.Single(s => s.Type == NpcType.NormalMole).Mole.GetComponent<IMoleHandler>();
                     currentMoleDuration = currentShowDurationNormalMole;
-                    // currentNpc = NpcType.NormalMole;
-                    // normalMole.gameObject.SetActive(true);
-                    // normalMole.Spawn(currentShowDurationNormalMole, OnFinishAnimation);
                 }
             }
             

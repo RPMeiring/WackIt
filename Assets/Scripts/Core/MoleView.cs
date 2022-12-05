@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace Core
 {
@@ -10,6 +11,7 @@ namespace Core
         private const float SPAWN_SCALE = 0f;
         private const float END_SCALE = 1f;
         private const float ANIMATION_DURATION = .3f;
+        private const float MAX_SHOW_DELAY_IN_SECONDS = 0.5f;
 
         [SerializeField] private Image image;
         [SerializeField] private Color defaultColor;
@@ -21,6 +23,7 @@ namespace Core
         
         public void Show(float showDuration, Action OnFinishAnimation)
         {
+            image.enabled = false;
             image.color = defaultColor;
             maxShowDuration = showDuration;
             this.OnFinishAnimation = OnFinishAnimation;
@@ -56,15 +59,18 @@ namespace Core
             }
 
             transform.localScale = endScale;
+            image.enabled = false;
             
             OnFinishAnimation?.Invoke();
         }
 
         private IEnumerator CoroutineShow()
         {
+            yield return new WaitForSeconds(Random.Range(0, MAX_SHOW_DELAY_IN_SECONDS));
+            
             Vector3 startScale = new Vector3(SPAWN_SCALE, SPAWN_SCALE, SPAWN_SCALE);
             Vector3 endScale = new Vector3(END_SCALE, END_SCALE, END_SCALE);
-            
+
             yield return StartCoroutine(animateShowHide(startScale, endScale));
             
         }
@@ -72,6 +78,7 @@ namespace Core
         private IEnumerator animateShowHide(Vector3 startScale, Vector3 endScale)
         {
             transform.localScale = startScale;
+            image.enabled = true;
 
             float elapsedTime = 0f;
             while (elapsedTime < ANIMATION_DURATION)
@@ -94,6 +101,7 @@ namespace Core
             }
 
             transform.localScale = startScale;
+            image.enabled = false;
             
             OnFinishAnimation?.Invoke();
         }
